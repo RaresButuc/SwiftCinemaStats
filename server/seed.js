@@ -9,7 +9,7 @@ const MovieSchema = new Schema({
   poster: String,
   watchlist: Boolean,
 });
-const movieModel = mongoose.model("Movie", MovieSchema);
+const movieModel = mongoose.model("movieModel", MovieSchema);
 
 async function seedDataBase() {
   await movieModel.deleteMany();

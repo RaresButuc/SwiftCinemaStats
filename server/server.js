@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
   
   app.get("/history/data", async (req, res) => {
       const movie = await movieM.find();
-      return res.json(movie)
+      res.json(movie)
   });
   
   app.post("/history/data", (req, res) => {
