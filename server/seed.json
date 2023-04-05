@@ -3,6 +3,6 @@
     "name": "String",
     "year": 2002,
     "poster": "String",
-    "watchlist": true
+    "watchlist": false
   }
 ]
