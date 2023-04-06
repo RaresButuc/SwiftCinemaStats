@@ -1,9 +1,10 @@
 export default function ChosenMovieInformations({ movie }) {
   return (
-    <>
-      <img src={movie.Poster} alt="movie.poster.png" />
+    <div className="searchedMovie">
+            <h1>{movie.Title}</h1>
 
-      <h1>{movie.Title}</h1>
+      <img className="myimg" src={movie.Poster} alt="movie.poster.png" />
+      <br></br>
       <h3>
         Release Date:<br></br>
         {movie.Released}
@@ -28,13 +29,7 @@ export default function ChosenMovieInformations({ movie }) {
         {movie.Plot}
       </h3>
       <h3>Ratings: <br></br>{movie.imdbRating}</h3>
-
-      {/* {movie.Ratings.map((movies) => (
-        <div>
-          <h3>{movies.Source}</h3>
-          <h3>{movies.Value}</h3>
-        </div>
-      ))} */}
-    </>
+      
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import ChosenMovieInformations from "../components/HomeMovie";
 
 export default function Home() {
@@ -77,9 +77,9 @@ export default function Home() {
       const movie = data.filter((movies) => movies.name === movieChosen.Title);
       if (movie.length > 0) {
         if (movie[0].watchlist === false) {
-          setWatchList("Add to Favourites");
+          setWatchList("ADD TO WATCHLIST");
         } else {
-          setWatchList("Delete from Favourites");
+          setWatchList("DELETE FROM WATCHLIST");
         }
       } else {
         console.log(123);
@@ -119,28 +119,28 @@ export default function Home() {
   return (
     <>
       {!movieSubmited ? (
-        <>
-          <form onSubmit={submitIt}>
-            <label>Title:</label>
+        <div>
+          <h1 className="watchlistTitle">CHOOSE A MOVIE</h1>
+          <form className= "home" onSubmit={submitIt}>
+            <div className="form">
             <br />
-            <input type="text" ref={titleRef} />
-            <br />
-            <br />
-            <label>Year of Release:</label>
-            <br />
-            <input type="text" ref={yearRef} />
+            <input className="i1" type="text" placeholder="Title" ref={titleRef}  />    
             <br />
             <br />
-            <button type="submit">Submit</button>
+            <input className="i2" type="text" ref={yearRef} placeholder="Year of Release" />
+            <br />
+            <br />
+            <button className="submitButton" type="submit">SEARCH</button>
+            </div>
           </form>
-        </>
+        </div>
       ) : (
         <>
-          <button onClick={submitIt}>Back to Search</button>
+          <button className="backToSearch" onClick={submitIt}>Back to Search</button>
           <br></br>
           <br></br>
           <ChosenMovieInformations movie={movieChosen} />
-          <button onClick={() => watchlistAdd(movieChosen.Title)}>
+          <button className = "addToFav" onClick={() => watchlistAdd(movieChosen.Title)}>
             {watchList}
           </button>
         </>
