@@ -120,7 +120,6 @@ export default function Home() {
     <>
       {!movieSubmited ? (
         <>
-          <h1>Home</h1>
           <form onSubmit={submitIt}>
             <label>Title:</label>
             <br />
