@@ -18,16 +18,33 @@ export default function Watchlist() {
     fetchMovies();
   }, []);
 
+  const watchlistDelete = async (movie) => {
+    window.location.reload(true);
+    const req = await fetch(`http://localhost:5000/history/data/${movie}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        watchlist: false,
+      }),
+    });
+    const res = await req.json();
+  };
+
   return (
     <>
-      {moviesWl&&moviesWl.map((movie) => (
-        <div className="watchlistMovies">
-          <img src={movie.poster} alt="movie.poster.png" />
+      {moviesWl &&
+        moviesWl.map((movie) => (
+          <div className="watchlistMovies">
+            <img src={movie.poster} alt="movie.poster.png" />
 
-          <h1>{movie.name}</h1>
-          <h2>{movie.year}</h2>
-        </div>
-      ))}
+            <h1>{movie.name}</h1>
+            <h2>{movie.year}</h2>
+            <button onClick={() => watchlistDelete(movie.name)}>
+              Delete from Favourites
+            </button>
+            <br></br><br></br>
+          </div>
+        ))}
     </>
   );
 }
