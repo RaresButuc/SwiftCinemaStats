@@ -32,15 +32,17 @@ export default function Watchlist() {
 
   return (
     <>
+    <h1 className="watchlistTitle">WATCHLIST</h1>
       {moviesWl &&
         moviesWl.map((movie) => (
           <div className="watchlistMovies">
-            <img src={movie.poster} alt="movie.poster.png" />
-
             <h1>{movie.name}</h1>
             <h2>{movie.year}</h2>
-            <button onClick={() => watchlistDelete(movie.name)}>
-              Delete from Favourites
+            <img className = "myimg" src={movie.poster} alt="movie.poster.png" />
+            <br></br>
+            <br></br>
+            <button className = "deleteButton" onClick={() => watchlistDelete(movie.name)}>
+              DELETE
             </button>
             <br></br><br></br>
           </div>
