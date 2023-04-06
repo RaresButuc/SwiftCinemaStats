@@ -5,7 +5,7 @@ export default function Home() {
   const [movieSubmited, setMovieSubmited] = useState(false);
   const [movieChosen, setMovieChosen] = useState("");
   const [edit, setEdit] = useState(false);
-  const [watchList, setWatchList] = useState("Add to Favourites");
+  const [watchList, setWatchList] = useState("Add to Watchlist");
   const titleRef = useRef(null);
   const yearRef = useRef(null);
 
@@ -77,9 +77,9 @@ export default function Home() {
       const movie = data.filter((movies) => movies.name === movieChosen.Title);
       if (movie.length > 0) {
         if (movie[0].watchlist === false) {
-          setWatchList("ADD TO WATCHLIST");
+          setWatchList("Add to Watchlist");
         } else {
-          setWatchList("DELETE FROM WATCHLIST");
+          setWatchList("Delete from Watchlist");
         }
       } else {
         console.log(123);
