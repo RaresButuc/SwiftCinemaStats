@@ -48,11 +48,6 @@ app.get("/history/data/:name", async (req, res) => {
   return res.json(element);
 });
 
-// app.delete("/history/data/:id", async (req, res) => {
-//     const deleted = await ToDo.findByIdAndDelete(req.params.id);
-//     return res.json(deleted);
-// });
-
 app.patch("/history/data/:name", async (req, res) => {
   const { watchlist } = req.body;
 

@@ -17,7 +17,7 @@ async function seedDataBase() {
 }
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/myapp");
+  await mongoose.connect("mongodb+srv://RaresButuc:vITYHVc1eXPmfdCM@clusterraresbutuc.9unmpzm.mongodb.net/");
   await seedDataBase();
 }
 
