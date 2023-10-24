@@ -121,28 +121,45 @@ export default function Home() {
       {!movieSubmited ? (
         <div className="homePage">
           <h1 className="watchlistTitle">CHOOSE A MOVIE</h1>
-          <form className= "homeForm" onSubmit={submitIt}>
+          <form className="homeForm" onSubmit={submitIt}>
             <div className="form">
-            <br />
-            <input className="i1" type="text" placeholder="Title" ref={titleRef}  />    
-            <br />
-            <br />
-            <input className="i2" type="text" ref={yearRef} placeholder="Year of Release" />
-            <br />
-            <br />
-            <button className="submitButton" type="submit">SEARCH</button>
+              <br />
+              <input
+                className="inputTitle"
+                type="text"
+                placeholder="Title"
+                ref={titleRef}
+              />
+              <br />
+              <br />
+              <input
+                className="inputYear"
+                type="text"
+                ref={yearRef}
+                placeholder="Year of Release"
+              />
+              <br />
+              <br />
+              <button className="submitButton" type="submit">
+                SEARCH
+              </button>
             </div>
           </form>
         </div>
       ) : (
         <>
-          <button className="backToSearch" onClick={submitIt}>Back to Search</button>
-          <br></br>
-          <br></br>
+          <div className="buttonsContainer">
+            <button className="backToSearch" onClick={submitIt}>
+              Back to Search
+            </button>
+            <button
+              className="addToFav"
+              onClick={() => watchlistAdd(movieChosen.Title)}
+            >
+              {watchList}
+            </button>
+          </div>
           <ChosenMovieInformations movie={movieChosen} />
-          <button className = "addToFav" onClick={() => watchlistAdd(movieChosen.Title)}>
-            {watchList}
-          </button>
         </>
       )}
     </>
