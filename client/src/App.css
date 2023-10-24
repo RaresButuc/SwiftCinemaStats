@@ -69,6 +69,12 @@ body {
   border: 2px solid #363434;
 }
 
+.movieCategTag {
+  color: rgb(245, 197, 24);
+  margin-bottom: 10px; /* Add some space at the bottom */
+
+}
+
 .myimg {
   max-width: 100%;
   height: 400px;
