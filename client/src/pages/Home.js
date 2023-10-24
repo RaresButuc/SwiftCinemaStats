@@ -119,9 +119,9 @@ export default function Home() {
   return (
     <>
       {!movieSubmited ? (
-        <div>
+        <div className="homePage">
           <h1 className="watchlistTitle">CHOOSE A MOVIE</h1>
-          <form className= "home" onSubmit={submitIt}>
+          <form className= "homeForm" onSubmit={submitIt}>
             <div className="form">
             <br />
             <input className="i1" type="text" placeholder="Title" ref={titleRef}  />    
