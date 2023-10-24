@@ -71,16 +71,56 @@ body {
 
 .movieCategTag {
   color: rgb(245, 197, 24);
-  margin-bottom: 10px; /* Add some space at the bottom */
-
 }
+
+/* Seached Movie Page */
 
 .myimg {
   max-width: 100%;
   height: 400px;
-  border: 2px solid #363434;
+  border: 3px solid #575353;
+}
+.movieTitle {
+  text-decoration: underline;
+  text-decoration-color: rgb(245, 197, 24); /* Choose your desired color */
+  text-decoration-thickness: 3px; /* Adjust the thickness of the underline */
+  text-underline-offset: 8px; /* Adjust the offset from the text */
 }
 
+.searchedMovieContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.posterTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Add space between the poster/title and movie details */
+}
+
+.movieDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+}
+
+.movieCategColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px; /* Add space between columns */
+}
+
+.movieCategGroup {
+  margin-bottom: 20px; /* Add space between groups */
+}
+/* ///////// */
 .deleteButton {
   background-color: #f4511e;
   border: 0.5px solid rgb(97, 76, 76);
@@ -98,10 +138,6 @@ body {
 
 .deleteButton:hover {
   opacity: 1;
-}
-
-.searchedMovie {
-  color: white;
 }
 
 .homePage {
