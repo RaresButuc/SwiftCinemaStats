@@ -19,17 +19,37 @@ body {
 
 .navBar {
   background-color: rgb(18, 18, 18);
-  font-size: 45px;
   height: 70px;
+  display: flex;
+  justify-content: space-between; /* Move content to the sides */
+  align-items: center; /* Vertically center the content */
+  padding-left: 60px; /* Add space on the left for the logo */
+  padding-right: 60px; /* Add space on the right for the buttons */
 }
 
-a {
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-height: 60px; /* Adjust the maximum height as needed */
+}
+
+.buttons {
+  display: flex;
+  flex-grow: 1; /* Allow the buttons to grow to fill available space */
+  justify-content: flex-end; /* Align buttons to the right */
+  
+}
+
+.navBarButton{
   background-color: rgb(245, 197, 24);
   color: rgb(0, 0, 0);
-  font: 25px Impact, sans-serif;
+  font: 27px Impact, sans-serif;
   text-decoration: unset;
-  padding: 5px 5%;
-  margin: 15px;
+  padding: 5px 15px; /* Adjust padding for buttons */
+  margin: 0 10px; /* Adjust margin for buttons */
 }
 
 .browsingTitle {
