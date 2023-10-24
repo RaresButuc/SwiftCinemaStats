@@ -138,7 +138,7 @@ export default function Home() {
                 ref={yearRef}
                 placeholder="Year of Release"
               />
-              <br />
+              <p className="attentionRule">*In case the "Title" is unique don't complete the "Year of Release" field</p>
               <br />
               <button className="submitButton" type="submit">
                 SEARCH

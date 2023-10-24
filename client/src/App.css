@@ -113,6 +113,12 @@ body {
   opacity: 1;
 }
 
+.attentionRule {
+  font-size: 14px;
+  color: rgb(245, 197, 24); 
+  margin-top: 5px; 
+}
+
 /* Buttons on the Stats Page */
 
 .buttonsContainer {
