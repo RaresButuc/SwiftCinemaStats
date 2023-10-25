@@ -227,7 +227,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* min-height: 100vh; */
   animation: bounce 2s infinite;
   font-size: 65px;
 }
