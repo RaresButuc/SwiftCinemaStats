@@ -221,13 +221,13 @@ body {
 .ErrorNotFound {
   color: white;
   position: fixed;
-  top: 0%;
+  top: 40%;
   left: 23%;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   animation: bounce 2s infinite;
   font-size: 65px;
 }
