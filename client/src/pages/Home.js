@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ChosenMovieInformations from "../components/HomeMovie";
 
 export default function Home() {
@@ -9,34 +9,51 @@ export default function Home() {
   const titleRef = useRef(null);
   const yearRef = useRef(null);
 
+  useEffect(() => {
+    const wlButton = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/history/data");
+        const data = await res.json();
+        const movie = data.filter(
+          (movies) => movies.name === movieChosen.Title
+        );
+        if (movie.length > 0) {
+          if (movie[0].watchlist === false) {
+            setWatchList("Add to Watchlist");
+          } else {
+            setWatchList("Delete from Watchlist");
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    wlButton();
+  }, []);
+
   const submitIt = async (e) => {
     e.preventDefault();
 
     if (movieSubmited === false) {
       setMovieSubmited(true);
-      console.log(yearRef.current.value);
-      if (titleRef.current.value && !yearRef.current.value) {
-        const response = await fetch(
-          `http://www.omdbapi.com/?t=${titleRef.current.value}&apikey=8100788`
-        );
-        const data = await response.json();
-        setMovieChosen(data);
-        postItOrNot(function () {
-          postMovies(data.Title, data.Year, data.Poster);
-        }, data.Title);
-      } else if (titleRef.current.value && yearRef.current.value) {
-        const response = await fetch(
-          `http://www.omdbapi.com/?t=${titleRef.current.value}&y=${yearRef.current.value}&apikey=8100788`
-        );
-        const data = await response.json();
-        console.log(yearRef);
-        setMovieChosen(data);
-        postItOrNot(function () {
-          postMovies(data.Title, data.Year, data.Poster);
-        }, data.Title);
-      }
+      searchThrowMovies(titleRef, yearRef);
     } else {
       setMovieSubmited(false);
+    }
+  };
+
+  const searchThrowMovies = async (title, year) => {
+    const response = await fetch(
+      `http://www.omdbapi.com/?t=${title.current.value}&y=${year.current.value}&apikey=8100788`
+    );
+    const data = await response.json();
+    if (data.Response !== "False") {
+      setMovieChosen(data);
+      postItOrNot(function () {
+        postMovies(data.Title, data.Year, data.Poster);
+      }, data.Title);
+    } else {
+      setMovieChosen(null);
     }
   };
 
@@ -57,32 +74,11 @@ export default function Home() {
     try {
       const response = await fetch("http://localhost:5000/history/data");
       const data = await response.json();
-      const yesOrNo = data.filter((history) => history.name === names);
-      console.log(yesOrNo);
-      console.log(yesOrNo.length);
-      if (yesOrNo.length > 0) {
-        console.log("Nope");
-      } else {
+      const isThisMovieOnHistoryAlready = data.filter(
+        (history) => history.name === names
+      );
+      if (isThisMovieOnHistoryAlready.length === 0) {
         action();
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const wlButton = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/history/data");
-      const data = await res.json();
-      const movie = data.filter((movies) => movies.name === movieChosen.Title);
-      if (movie.length > 0) {
-        if (movie[0].watchlist === false) {
-          setWatchList("Add to Watchlist");
-        } else {
-          setWatchList("Delete from Watchlist");
-        }
-      } else {
-        console.log(123);
       }
     } catch (err) {
       console.log(err);
@@ -93,28 +89,24 @@ export default function Home() {
     if (edit === false) {
       setWatchList("Delete from Favourites");
       setEdit(true);
-      const req = await fetch(`http://localhost:5000/history/data/${movie}`, {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          watchlist: true,
-        }),
-      });
-      const res = await req.json();
+      watchlistPutReq(true, movie);
     } else {
       setWatchList("Add to Favourites");
       setEdit(false);
-      const req = await fetch(`http://localhost:5000/history/data/${movie}`, {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          watchlist: false,
-        }),
-      });
-      const res = await req.json();
+      watchlistPutReq(false, movie);
     }
   };
-  wlButton();
+
+  const watchlistPutReq = async (trueOrFalse, movies) => {
+    const req = await fetch(`http://localhost:5000/history/data/${movies}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        watchlist: trueOrFalse,
+      }),
+    });
+    const res = await req.json();
+  };
 
   return (
     <>
@@ -138,7 +130,10 @@ export default function Home() {
                 ref={yearRef}
                 placeholder="Year of Release"
               />
-              <p className="attentionRule">*In case the "Title" is unique don't complete the "Year of Release" field</p>
+              <p className="attentionRule">
+                *In case the "Title" is unique don't complete the "Year of
+                Release" field
+              </p>
               <br />
               <button className="submitButton" type="submit">
                 SEARCH
@@ -148,18 +143,31 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <div className="buttonsContainer">
-            <button className="backToSearch" onClick={submitIt}>
-              Back to Search
-            </button>
-            <button
-              className="addToFav"
-              onClick={() => watchlistAdd(movieChosen.Title)}
-            >
-              {watchList}
-            </button>
-          </div>
-          <ChosenMovieInformations movie={movieChosen} />
+          {movieChosen !== null ? (
+            <>
+              <div className="buttonsContainer">
+                <button className="backToSearch" onClick={submitIt}>
+                  Back to Search
+                </button>
+                <button
+                  className="addToFav"
+                  onClick={() => watchlistAdd(movieChosen.Title)}
+                >
+                  {watchList}
+                </button>
+              </div>
+              <ChosenMovieInformations movie={movieChosen} />
+            </>
+          ) : (
+            <>
+              <button className="backToSearch" onClick={submitIt}>
+                Back to Search
+              </button>
+              <h1 className="ErrorNotFound">
+                No Movie Found...Please Try Again!
+              </h1>
+            </>
+          )}
         </>
       )}
     </>

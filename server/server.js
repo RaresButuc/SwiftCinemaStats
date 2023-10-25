@@ -26,7 +26,6 @@ app.get("/history/data", async (req, res) => {
 });
 
 app.post("/history/data", (req, res) => {
-  console.log(req.body);
   const name = req.body.title;
   const year = req.body.year;
   const poster = req.body.poster;
