@@ -24,7 +24,7 @@ export default function MoviesRecommandationsSlides({
   useEffect(() => {
     const moviesRecommandedFetced = async () => {
       try {
-        for (let i = 1; index < allMoviesFetchd.length + 1; index++) {
+        for (let i = 1; i <= allMoviesFetchd.length; i++) {
           const movieTitle =
             i === 1
               ? movie1
@@ -41,16 +41,24 @@ export default function MoviesRecommandationsSlides({
           );
           const data = await response.json();
 
-          if (i === 1) {
-            setMovie1Recommanded(data);
-          } else if (i === 2) {
-            setMovie2Recommanded(data);
-          } else if (i === 3) {
-            setMovie3Recommanded(data);
-          } else if (i === 4) {
-            setMovie4Recommanded(data);
-          } else {
-            setMovie5Recommanded(data);
+          switch (i) {
+            case 1:
+              setMovie1Recommanded(data);
+              break;
+            case 2:
+              setMovie2Recommanded(data);
+              break;
+            case 3:
+              setMovie3Recommanded(data);
+              break;
+            case 4:
+              setMovie4Recommanded(data);
+              break;
+            case 5:
+              setMovie5Recommanded(data);
+              break;
+            default:
+              break;
           }
         }
       } catch (err) {
@@ -61,14 +69,11 @@ export default function MoviesRecommandationsSlides({
   }, []);
 
   let slideIndex = 1;
-  showSlides(slideIndex);
 
-  // Next/previous controls
   function plusSlides(n) {
     showSlides((slideIndex += n));
   }
 
-  // Thumbnail image controls
   function currentSlide(n) {
     showSlides((slideIndex = n));
   }
@@ -77,66 +82,51 @@ export default function MoviesRecommandationsSlides({
     let i;
     let slides = document.getElementsByClassName("mySlides");
     let dots = document.getElementsByClassName("dot");
+
     if (n > slides.length) {
       slideIndex = 1;
     }
     if (n < 1) {
       slideIndex = slides.length;
     }
+
     for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+      if (slides[i]) {
+        slides[i].style.display = "none";
+      }
     }
+
     for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+      if (dots[i]) {
+        dots[i].className = dots[i].className.replace("active", "");
+      }
     }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
+
+    if (slides[slideIndex - 1]) {
+      slides[slideIndex - 1].style.display = "block";
+    }
+
+    if (dots[slideIndex - 1]) {
+      dots[slideIndex - 1].className += " active";
+    }
   }
 
   return (
-    <>
-      <div class="slideshow-container">
-        {/* <div class="mySlides fade">
-          <img src="img1.jpg" />
-          <div class="text">movie1.Title</div>
-        </div>
-
-        <div class="mySlides fade">
-          <img src="img2.jpg" style="width:100%" />
-          <div class="text">Caption Two</div>
-        </div>
-
-        <div class="mySlides fade">
-          <img src="img3.jpg" style="width:100%" />
-          <div class="text">Caption Three</div>
-        </div>
-
-        <div class="mySlides fade">
-          <img src="img4.jpg" style="width:100%" />
-          <div class="text">Caption Three</div>
-        </div> */}
-        {allMoviesFetchd.map((movie) => (
-          <div class="mySlides fade">
-            <img src={movie.Poster} style="width:100%" />
-            <div class="text">{movie.Title}</div>
+    <div className="slideshow-container">
+      {allMoviesFetchd[4] !== null &&
+        allMoviesFetchd.map((movie, index) => (
+          <div className="mySlides fade" key={index}>
+            <img src={movie.Poster} alt={movie.Title} />
+            <div className="text">{movie.Title}</div>
           </div>
         ))}
 
-        <a class="prev" onclick={plusSlides(-1)}>
-          &#10094;
-        </a>
-        <a class="next" onclick={plusSlides(1)}>
-          &#10095;
-        </a>
-      </div>
-      <br />
-
-      <div style="text-align:center">
-        <span class="dot" onclick={currentSlide(1)}></span>
-        <span class="dot" onclick={currentSlide(2)}></span>
-        <span class="dot" onclick={currentSlide(3)}></span>
-        <span class="dot" onclick={currentSlide(4)}></span>
-      </div>
-    </>
+      <a className="prev" onClick={() => plusSlides(-1)}>
+        &#10094;
+      </a>
+      <a className="next" onClick={() => plusSlides(1)}>
+        &#10095;
+      </a>
+    </div>
   );
 }

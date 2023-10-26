@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import ChosenMovieInformations from "../components/HomeMovie";
+import MoviesRecommandationsSlides from "../components/MoviesRecommandationsSlides";
 
 export default function Home() {
   const [movieSubmited, setMovieSubmited] = useState(false);
@@ -112,6 +113,13 @@ export default function Home() {
     <>
       {!movieSubmited ? (
         <div className="homePage">
+          <MoviesRecommandationsSlides
+            movie1={"One Flew Over the Cuckoo's Nest"}
+            movie2={"Léon: The Professional"}
+            movie3={"Legends of the Fall"}
+            movie4={"The Long Kiss Goodnight"}
+            movie5={"Scent of a Woman"}
+          />
           <h1 className="watchlistTitle">CHOOSE A MOVIE</h1>
           <form className="homeForm" onSubmit={submitIt}>
             <div className="form">
