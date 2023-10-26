@@ -113,41 +113,45 @@ export default function Home() {
     <>
       {!movieSubmited ? (
         <div className="homePage">
-          <MoviesRecommandationsSlides
-            movie1={"One Flew Over the Cuckoo's Nest"}
-            movie2={"Carlito's Way"}
-            movie3={"Legends of the Fall"}
-            movie4={"The Long Kiss Goodnight"}
-            movie5={"Scent of a Woman"}
-          />
-          <h1 className="watchlistTitle">CHOOSE A MOVIE</h1>
-          <form className="homeForm" onSubmit={submitIt}>
-            <div className="form">
-              <br />
-              <input
-                className="inputTitle"
-                type="text"
-                placeholder="Title"
-                ref={titleRef}
-              />
-              <br />
-              <br />
-              <input
-                className="inputYear"
-                type="text"
-                ref={yearRef}
-                placeholder="Year of Release"
-              />
-              <p className="attentionRule">
-                *In case the "Title" is unique don't complete the "Year of
-                Release" field
-              </p>
-              <br />
-              <button className="submitButton" type="submit">
-                SEARCH
-              </button>
-            </div>
-          </form>
+          <div className="recomMovies">
+            <MoviesRecommandationsSlides
+              movie1={"One Flew Over the Cuckoo's Nest"}
+              movie2={"Carlito's Way"}
+              movie3={"Legends of the Fall"}
+              movie4={"The Long Kiss Goodnight"}
+              movie5={"Scent of a Woman"}
+            />
+          </div>
+          <div className="form">
+            <h1 className="watchlistTitle">CHOOSE A MOVIE</h1>
+            <form className="homeForm" onSubmit={submitIt}>
+              <div className="form">
+                <br />
+                <input
+                  className="inputTitle"
+                  type="text"
+                  placeholder="Title"
+                  ref={titleRef}
+                />
+                <br />
+                <br />
+                <input
+                  className="inputYear"
+                  type="text"
+                  ref={yearRef}
+                  placeholder="Year of Release"
+                />
+                <p className="attentionRule">
+                  *In case the "Title" is unique, don't complete the "Year of
+                  Release" field
+                </p>
+                <br />
+                <button className="submitButton" type="submit">
+                  SEARCH
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       ) : (
         <>

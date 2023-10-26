@@ -56,12 +56,10 @@ body {
 /* Home Page */
 
 .homePage {
-  display: inline;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+  height: 80vh;
 }
 
 .homeForm {
