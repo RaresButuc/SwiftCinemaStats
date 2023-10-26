@@ -13,7 +13,7 @@ export default function MoviesRecommandationsSlides({
   const [movies4Recommanded, setMovie4Recommanded] = useState(null);
   const [movies5Recommanded, setMovie5Recommanded] = useState(null);
 
-  const allMoviesFetchd = [
+  const allMoviesFetched = [
     movies1Recommanded,
     movies2Recommanded,
     movies3Recommanded,
@@ -21,10 +21,12 @@ export default function MoviesRecommandationsSlides({
     movies5Recommanded,
   ];
 
+  let slideIndex = 1;
+
   useEffect(() => {
-    const moviesRecommandedFetced = async () => {
+    const moviesRecommendedFetched = async () => {
       try {
-        for (let i = 1; i <= allMoviesFetchd.length; i++) {
+        for (let i = 1; i <= allMoviesFetched.length; i++) {
           const movieTitle =
             i === 1
               ? movie1
@@ -65,10 +67,12 @@ export default function MoviesRecommandationsSlides({
         console.log(err);
       }
     };
-    moviesRecommandedFetced();
+    moviesRecommendedFetched();
   }, []);
 
-  let slideIndex = 1;
+  useEffect(() => {
+    showSlides(slideIndex);
+  }, [allMoviesFetched]);
 
   function plusSlides(n) {
     showSlides((slideIndex += n));
@@ -83,38 +87,30 @@ export default function MoviesRecommandationsSlides({
     let slides = document.getElementsByClassName("mySlides");
     let dots = document.getElementsByClassName("dot");
 
+    if (slides.length === 0 || dots.length === 0) {
+      return;
+    }
+
     if (n > slides.length) {
       slideIndex = 1;
     }
     if (n < 1) {
       slideIndex = slides.length;
     }
-
     for (i = 0; i < slides.length; i++) {
-      if (slides[i]) {
-        slides[i].style.display = "none";
-      }
+      slides[i].style.display = "none";
     }
-
     for (i = 0; i < dots.length; i++) {
-      if (dots[i]) {
-        dots[i].className = dots[i].className.replace("active", "");
-      }
+      dots[i].className = dots[i].className.replace(" active", "");
     }
-
-    if (slides[slideIndex - 1]) {
-      slides[slideIndex - 1].style.display = "block";
-    }
-
-    if (dots[slideIndex - 1]) {
-      dots[slideIndex - 1].className += " active";
-    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
   }
 
   return (
     <div className="slideshow-container">
-      {allMoviesFetchd[4] !== null &&
-        allMoviesFetchd.map((movie, index) => (
+      {allMoviesFetched[4] !== null &&
+        allMoviesFetched.map((movie, index) => (
           <div className="mySlides fade" key={index}>
             <img src={movie.Poster} alt={movie.Title} />
             <div className="text">{movie.Title}</div>
@@ -127,6 +123,13 @@ export default function MoviesRecommandationsSlides({
       <a className="next" onClick={() => plusSlides(1)}>
         &#10095;
       </a>
+      <div style={{ textAlign: "center" }}>
+        <span className="dot" onClick={() => currentSlide(1)}></span>
+        <span className="dot" onClick={() => currentSlide(2)}></span>
+        <span className="dot" onClick={() => currentSlide(3)}></span>
+        <span className="dot" onClick={() => currentSlide(4)}></span>
+        <span className="dot" onClick={() => currentSlide(5)}></span>
+      </div>
     </div>
   );
 }

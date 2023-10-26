@@ -121,24 +121,26 @@ body {
 
 /* Movies Recommandations on the Home Page */
 
-* {box-sizing:border-box}
+* {
+  box-sizing: border-box;
+}
 
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 500px;
   position: relative;
-  margin: auto;
+  margin-right: 20px;
 }
 
 .mySlides {
   display: none;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
   width: auto;
-  margin-top: -22px;
   padding: 16px;
   color: white;
   font-weight: bold;
@@ -148,13 +150,18 @@ body {
   user-select: none;
 }
 
+.prev {
+  left: 0;
+}
+
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(72, 72, 72, 0.8);
 }
 
 .text {
@@ -180,14 +187,15 @@ body {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #bbb;
+  background-color: rgb(178, 178, 178);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
-  background-color: #717171;
+.active,
+.dot:hover {
+  background-color: rgb(245, 197, 24);
 }
 
 .fade {
@@ -196,8 +204,12 @@ body {
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Buttons on the Stats Page */
