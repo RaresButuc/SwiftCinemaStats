@@ -5,18 +5,36 @@ export default function MoviesRecommandationsSlides({
   movie2,
   movie3,
   movie4,
+  movie5,
 }) {
   const [movies1Recommanded, setMovie1Recommanded] = useState(null);
   const [movies2Recommanded, setMovie2Recommanded] = useState(null);
   const [movies3Recommanded, setMovie3Recommanded] = useState(null);
   const [movies4Recommanded, setMovie4Recommanded] = useState(null);
+  const [movies5Recommanded, setMovie5Recommanded] = useState(null);
+
+  const allMoviesFetchd = [
+    movies1Recommanded,
+    movies2Recommanded,
+    movies3Recommanded,
+    movies4Recommanded,
+    movies5Recommanded,
+  ];
 
   useEffect(() => {
     const moviesRecommandedFetced = async () => {
       try {
-        for (let i = 1; index < 5; index++) {
+        for (let i = 1; index < allMoviesFetchd.length + 1; index++) {
           const movieTitle =
-            i === 1 ? movie1 : i === 2 ? movie2 : i === 3 ? movie3 : movie4;
+            i === 1
+              ? movie1
+              : i === 2
+              ? movie2
+              : i === 3
+              ? movie3
+              : i === 4
+              ? movie4
+              : movie5;
 
           const response = await fetch(
             `http://www.omdbapi.com/?t=${movieTitle}&y=null&apikey=8100788`
@@ -31,6 +49,8 @@ export default function MoviesRecommandationsSlides({
             setMovie3Recommanded(data);
           } else if (i === 4) {
             setMovie4Recommanded(data);
+          } else {
+            setMovie5Recommanded(data);
           }
         }
       } catch (err) {
@@ -76,7 +96,7 @@ export default function MoviesRecommandationsSlides({
   return (
     <>
       <div class="slideshow-container">
-        <div class="mySlides fade">
+        {/* <div class="mySlides fade">
           <img src="img1.jpg" />
           <div class="text">movie1.Title</div>
         </div>
@@ -94,7 +114,13 @@ export default function MoviesRecommandationsSlides({
         <div class="mySlides fade">
           <img src="img4.jpg" style="width:100%" />
           <div class="text">Caption Three</div>
-        </div>
+        </div> */}
+        {allMoviesFetchd.map((movie) => (
+          <div class="mySlides fade">
+            <img src={movie.Poster} style="width:100%" />
+            <div class="text">{movie.Title}</div>
+          </div>
+        ))}
 
         <a class="prev" onclick={plusSlides(-1)}>
           &#10094;
