@@ -20,15 +20,16 @@ export default function History() {
   return (
     <>
       <h1 className="historyTitle">BROWSING HISTORY</h1>
-      {moviesHistory&&moviesHistory.map((movie) => (
-        <div className="watchlistMovies">
-          <img className="myimg" src={movie.poster} alt="movie.poster.png" />
-          <div clasName="scris">
-          <h1>{movie.name}</h1>
-          <h2>{movie.year}</h2>
+      {moviesHistory &&
+        moviesHistory.map((movie) => (
+          <div className="watchlistMovies">
+            <img className="myimg" src={movie.poster} alt="movie.poster.png" />
+            <div clasName="scris">
+              <h1>{movie.name}</h1>
+              <h2>{movie.year}</h2>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </>
   );
 }

@@ -10,9 +10,15 @@ const NavBar = () => {
         </a>
       </div>
       <div className="buttons">
-        <a href="/" className="navBarButton">HOME</a>
-        <a href="/watchlist" className="navBarButton">WATCHLIST</a>
-        <a href="/history" className="navBarButton">BROWSING HISTORY</a>
+        <a href="/" className="navBarButton">
+          HOME
+        </a>
+        <a href="/watchlist" className="navBarButton">
+          WATCHLIST
+        </a>
+        <a href="/history" className="navBarButton">
+          BROWSING HISTORY
+        </a>
       </div>
     </div>
   );
