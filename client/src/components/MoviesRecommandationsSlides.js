@@ -15,11 +15,23 @@ export default function MoviesRecommandationsSlides({
     const moviesRecommandedFetced = async () => {
       try {
         for (let i = 1; index < 5; index++) {
-            const movieTitle = i === 1 ? movie1 : i === 2 ? movie2 : i === 3 ? movie3 : movie4;
-            
-            const response = await fetch(`http://www.omdbapi.com/?t=${movieTitle}&y=null&apikey=8100788`);
-            const data = await response.json();
-            setMoviesWl(favourites);
+          const movieTitle =
+            i === 1 ? movie1 : i === 2 ? movie2 : i === 3 ? movie3 : movie4;
+
+          const response = await fetch(
+            `http://www.omdbapi.com/?t=${movieTitle}&y=null&apikey=8100788`
+          );
+          const data = await response.json();
+
+          if (i === 1) {
+            setMovie1Recommanded(data);
+          } else if (i === 2) {
+            setMovie2Recommanded(data);
+          } else if (i === 3) {
+            setMovie3Recommanded(data);
+          } else if (i === 4) {
+            setMovie4Recommanded(data);
+          }
         }
       } catch (err) {
         console.log(err);
