@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function MoviesRecommandationsSlides({
+export default function MoviesRecommendationsSlides({
   movie1,
   movie2,
   movie3,

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import ChosenMovieInformations from "../components/HomeMovie";
-import MoviesRecommandationsSlides from "../components/MoviesRecommandationsSlides";
+import MoviesRecommendationsSlides from "../components/MoviesRecommendationsSlides";
 
 export default function Home() {
   const [movieSubmited, setMovieSubmited] = useState(false);
@@ -114,7 +114,8 @@ export default function Home() {
       {!movieSubmited ? (
         <div className="homePage">
           <div className="recomMovies">
-            <MoviesRecommandationsSlides
+            <h1 className="movieRecomTitle">This Week's Recommendations🍿</h1>
+            <MoviesRecommendationsSlides
               movie1={"The Gentlemen"}
               movie2={"Carlito's Way"}
               movie3={"Legends of the Fall"}
