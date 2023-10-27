@@ -115,7 +115,7 @@ export default function Home() {
         <div className="homePage">
           <div className="recomMovies">
             <MoviesRecommandationsSlides
-              movie1={"One Flew Over the Cuckoo's Nest"}
+              movie1={"The Gentlemen"}
               movie2={"Carlito's Way"}
               movie3={"Legends of the Fall"}
               movie4={"The Long Kiss Goodnight"}
