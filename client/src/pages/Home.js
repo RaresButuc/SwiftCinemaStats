@@ -88,11 +88,11 @@ export default function Home() {
 
   const watchlistAdd = async (movie) => {
     if (edit === false) {
-      setWatchList("Delete from Favourites");
+      setWatchList("Delete from Watchlist");
       setEdit(true);
       watchlistPutReq(true, movie);
     } else {
-      setWatchList("Add to Favourites");
+      setWatchList("Add to Watchlist");
       setEdit(false);
       watchlistPutReq(false, movie);
     }
@@ -114,7 +114,7 @@ export default function Home() {
       {!movieSubmited ? (
         <div className="homePage">
           <div className="recomMovies">
-            <h1 className="movieRecomTitle">This Week's Recommendations🍿</h1>
+            <h1 className="movieRecomTitle" style={{marginTop:"77px"}}>This Week's Recommendations🍿</h1>
             <MoviesRecommendationsSlides
               movie1={"The Gentlemen"}
               movie2={"Carlito's Way"}
