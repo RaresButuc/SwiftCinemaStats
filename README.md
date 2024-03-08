@@ -83,7 +83,8 @@ c. On the movie page, first of all you can see 2 buttons on top of the page: "Ba
 
 ![2](https://github.com/RaresButuc/SwiftCinemaStats.com/assets/116391767/81d7067d-af25-44ca-ad70-0ff664a2c4da)
 
-////
+![4](https://github.com/RaresButuc/SwiftCinemaStats.com/assets/116391767/ebb24570-d882-4287-93dd-d595f468e4ec)
+
 
 d. The stats of the movie includes all the basic important informations about the movie you searched for,including the poster;
 
