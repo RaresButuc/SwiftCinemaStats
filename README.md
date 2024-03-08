@@ -3,7 +3,8 @@
 ## Project Description 
 Your platform for lightning-fast access to comprehensive movie information and insights. Dive into a treasure trove of quick and detailed movie facts, reviews, and cinematic insights, all delivered at lightning speed to enhance your movie-watching experience. Join us on "SwiftCinemaStats" and stay ahead in the world of films.
 
-<img src="https://cdn.discordapp.com/attachments/1080812341693784124/1178430588932329524/image.png?ex=65761e02&is=6563a902&hm=f5dbb974fa52c0315d49f6403e23a8e157292f3c867b87f3c63b5225842f3308&" />
+
+![1](https://github.com/RaresButuc/SwiftCinemaStats.com/assets/116391767/dbd00c4d-c977-4d12-b615-a6b89ff61094)
 
 
 ### Technologies Used
