@@ -23,7 +23,7 @@ During SwiftCinemaStats' development, several important technologies were used:
 
 The most important challenges we encountered during the development:
 
-- SDesign using CSS instead of Bootstrap(that we didn't knew at the time of development);
+- Design using CSS instead of Bootstrap(that we didn't knew at the time of development);
 
 - Canceling some plans for the website becuase the API doesn't work as we expected;
 
